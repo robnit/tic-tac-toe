@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
+import { connect } from 'react-redux';
+import { addSymbol } from '../game/actions';
 import Square from './Square';
 
-export default class Grid extends Component {
-
-
+class Grid extends Component {
   renderSquare(i) {
     return <Square 
       // value={this.state.squares[i]}
@@ -14,7 +12,7 @@ export default class Grid extends Component {
   }
 
   render() {
-
+    console.log('===sdgkjbsdgjk', );
     return(
       <div>
         <div className="row">
@@ -34,6 +32,16 @@ export default class Grid extends Component {
         </div>
       </div>
     );
-
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    grid: state
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { addSymbol }
+)(Grid);
