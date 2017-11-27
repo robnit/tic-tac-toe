@@ -78,6 +78,9 @@ export function takeTurn(index) {
       type: SOME_ACTION,
       payload: /*...*/
     });
+    
+    // you can retrieve the "new" state if needed after dispatching an action:
+    const newState = getState();
 
     // you can dispatch more than one action if needed:
     dispatch({
