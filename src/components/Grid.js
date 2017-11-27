@@ -5,11 +5,15 @@ import Square from './Square';
 
 export default class Grid extends Component {
 
+  handleClick(i) {
+    this.addSymbol(i, X);
+  }
+
 
   renderSquare(i) {
     return <Square 
-      // value={this.state.squares[i]}
-      // onClick={() => this.handleClick(i)}
+      value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
     />;
   }
 
