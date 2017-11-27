@@ -6,7 +6,7 @@ export default class Square extends Component {
     return (
       <button className="square">
       </button>
-    )
+    );
 
   }
 }

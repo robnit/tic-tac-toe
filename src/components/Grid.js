@@ -2,17 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSymbol } from '../game/actions';
 import Square from './Square';
+import { X } from '../game/constants';
 
 class Grid extends Component {
+  handleClick(i) {
+    console.log('handleClick, i is', i);
+    this.addSymbol(i, X);
+  }
+
   renderSquare(i) {
     return <Square 
       // value={this.state.squares[i]}
-      // onClick={() => this.handleClick(i)}
+      onClick={() => {
+        console.log('in rendersquare, i is', i);
+        return this.handleClick(i);
+      }
+      }
     />;
   }
 
   render() {
-    console.log('===sdgkjbsdgjk', );
     return(
       <div>
         <div className="row">
