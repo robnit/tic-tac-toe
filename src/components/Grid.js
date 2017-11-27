@@ -13,7 +13,7 @@ class Grid extends Component {
   renderSquare(i) {
     return <Square 
       // value={this.state.squares[i]}
-      onClick={() => {
+      onClick={i => {
         console.log('in rendersquare, i is', i);
         return this.handleClick(i);
       }
