@@ -1,23 +1,26 @@
 import * as actions from './constants';
 
 export const initialState = {
-    grid: Array(9).fill(null),
-    activePlayer: X
-  };
+  grid: Array(9).fill(null),
+  activePlayer: actions.X
+};
 
-export default function gameReducer(state=initialState, {type, payload}) {
+export default function gameReducer(state = initialState, { type, payload }) {
+  console.log('in reducer');
   switch(type){
-    case actions.SYMBOL_ADD:
-      const newGrid = [...state.grid];
-      const { position, activePlayer } = payload;
-      newGrid[position] = activePlayer;
-      return {
-        ...state,
-        grid: newGrid
-      }
+  case actions.SYMBOL_ADD:
+    console.log('in symbol add case');
+    var newGrid = [...state.grid];
+    var { position, activePlayer } = payload;
+    newGrid[position] = activePlayer;
+    
+    return {
+      ...state,
+      grid: newGrid
+    };
 
-    default: 
-      return state;
+  default: 
+    return state;
   }
 }
 

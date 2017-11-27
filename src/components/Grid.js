@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-
+import { connect } from 'react-redux';
+import { addSymbol } from '../game/actions';
 import Square from './Square';
+import { X } from '../game/constants';
 
-export default class Grid extends Component {
-
+class Grid extends Component {
   handleClick(i) {
-    this.addSymbol(i, X);
+    console.log('handleClick, i is', i);
+    addSymbol(i, X);
   }
 
-
   renderSquare(i) {
+    console.log('about to render a square, i is', i);
     return <Square 
-      value={this.state.squares[i]}
-      onClick={() => this.handleClick(i)}
+      // value={this.state.squares[i]}
+      index={i}
+      onClick={a => {
+        console.log('in onClick, i is', a);
+        return this.handleClick(a);
+      }
+      }
     />;
   }
 
   render() {
-
     return(
       <div>
         <div className="row">
@@ -38,6 +43,16 @@ export default class Grid extends Component {
         </div>
       </div>
     );
-
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    grid: state
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { addSymbol }
+)(Grid);
