@@ -31,7 +31,7 @@ In order to complete the tic-tac-toe game, you will need to code action creators
 
 In order to enable this functionality, you need to `> npm i redux-thunk` and change your store setup as follows:
 
-```
+```js
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
@@ -64,7 +64,7 @@ export default store;
 The way we invert control in the action creator is to return a function, instead of an object. This function will then be 
 "called back" with `dispatch` and `getState` arguments:
 
-```
+```js
 export function takeTurn(index) {
   return (dispatch, getState) => {
     // get the current state by calling "getState":
