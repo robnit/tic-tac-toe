@@ -7,15 +7,17 @@ import { X } from '../game/constants';
 class Grid extends Component {
   handleClick(i) {
     console.log('handleClick, i is', i);
-    this.addSymbol(i, X);
+    addSymbol(i, X);
   }
 
   renderSquare(i) {
+    console.log('about to render a square, i is', i);
     return <Square 
       // value={this.state.squares[i]}
-      onClick={i => {
-        console.log('in rendersquare, i is', i);
-        return this.handleClick(i);
+      index={i}
+      onClick={a => {
+        console.log('in onClick, i is', a);
+        return this.handleClick(a);
       }
       }
     />;
