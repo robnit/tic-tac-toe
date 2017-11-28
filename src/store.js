@@ -13,14 +13,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // create store
 const store = createStore(
-  gameReducer,
-  {}, 
+  rootReducer,
+  
   // this is the new piece here!!!
   composeEnhancers(
     applyMiddleware(thunk)
   )
 );
-
-console.log('rootReducer is', rootReducer);
 
 export default store;
