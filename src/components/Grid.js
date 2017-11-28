@@ -18,8 +18,8 @@ class Grid extends Component {
   }
 
   render() {
-    if (this.props.tie) return <span>You Tied</span>;   
-    if (this.props.won) return <span>You Won</span>;
+    const tied = (this.props.tie) ? <span>You Tied</span> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <span>{this.props.whoWon} is the Winner</span> : null;
     return(
       <div>
         <div className="row">
@@ -37,6 +37,8 @@ class Grid extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        <span>{winner}</span>
+        <span>{tied}</span>
       </div>
     );
   }
@@ -46,7 +48,7 @@ function mapStateToProps(state) {
   return {
     grid: state.game.grid,
     tie: state.game.tie,
-    won: state.game.won
+    whoWon: state.game.whoWon
   };
 }
 
