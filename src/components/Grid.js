@@ -24,8 +24,8 @@ class Grid extends Component {
   }
 
   render() {
-    const tied = (this.props.tie) ? <div><span>You Tied</span> <button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span> <button className="button" onClick={() => this.handleReset()}>RESET</button></div>  : null;
+    const tied = (this.props.tie) ? <div><span>You Tied</span><br/><button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span><br/><button className="button" onClick={() => this.handleReset()}>RESET</button></div>  : null;
     return(
       <div className="center">
         <div className="row">
@@ -43,11 +43,11 @@ class Grid extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <span>{winner}</span>
-        <span>{tied}</span>
-        <span>X wins: {this.props.xWins}</span>
-        <span>O wins: {this.props.oWins}</span>
-        <p>It's {this.props.activePlayer}'s turn</p>
+        <p>X wins: {this.props.xWins}</p>
+        <p>O wins: {this.props.oWins}</p>
+        <p class="title is-4">It's {this.props.activePlayer}'s turn</p>
+        <p class="title is-3">{winner}</p>
+        <p class="title is-3">{tied}</p>
       </div>
     );
   }
