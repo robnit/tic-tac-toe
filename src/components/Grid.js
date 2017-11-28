@@ -10,7 +10,6 @@ class Grid extends Component {
   }
 
   handleReset() {
-    console.log('in handleReset');
     this.props.onReset();
   }
 
@@ -24,8 +23,12 @@ class Grid extends Component {
   }
 
   render() {
-    const tied = (this.props.tie) ? <div><span>You Tied</span><br/><button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span><br/><button className="button" onClick={() => this.handleReset()}>RESET</button></div>  : null;
+    const tied = (this.props.tie) ? <div><span>You Tied</span><br/>
+      <button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <div>
+      <span>{this.props.whoWon} is the Winner</span><br/>
+      <button className="button" onClick={() => this.handleReset()}>RESET</button>
+    </div>  : null;
     return(
       <div className="center">
         <div className="row">
@@ -43,11 +46,13 @@ class Grid extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <p>X wins: {this.props.xWins}</p>
-        <p>O wins: {this.props.oWins}</p>
-        <p class="title is-4">It's {this.props.activePlayer}'s turn</p>
-        <p class="title is-3">{winner}</p>
-        <p class="title is-3">{tied}</p>
+        <div className="textStuff">
+          <p>X wins: {this.props.xWins}</p>
+          <p>O wins: {this.props.oWins}</p>
+          <p className="title is-4">It's {this.props.activePlayer}'s turn</p>
+          <p className="title is-3">{winner}</p>
+          <p className="title is-3">{tied}</p>
+        </div>
       </div>
     );
   }
@@ -70,7 +75,6 @@ function mapDispatchToProps(dispatch) {
       dispatch(addSymbol(position));
     },
     onReset() {
-      console.log('in mapDispatch');
       dispatch(resetGame());
     }
   };

@@ -59,11 +59,6 @@ export default function game(state = initialState, { type, payload }) {
     };
 
   case actions.RESET_GAME: {
-    console.log('in reducer');
-    //active player to !WhoWon
-    //set all of grid to null
-    //set gameover to false
-    //set whoWon to nobody
     let newActivePlayer = state.activePlayer;
 
     if (state.tie === false) {
