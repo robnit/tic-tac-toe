@@ -9,12 +9,13 @@ class Grid extends Component {
     this.props.onAddSymbol(i, X);
   }
 
+  //Question: this will only run initially. Does not update when props are updated
   renderSquare(i) {
-    return <Square 
-      // value={this.state.squares[i]}
+    return (<Square 
+      value={this.props.grid[i]}
       index={i}
       onClick={a => this.handleClick(a)
-      }/>;
+      }/>);
   }
 
   render() {
@@ -42,14 +43,14 @@ class Grid extends Component {
 
 function mapStateToProps(state) {
   return {
-    grid: state
+    //Question: why are there two nested gameReducers in this state param? Is there a better way to do this?
+    grid: state.gameReducer.grid
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onAddSymbol: (position, symbol) => {
-      console.log('mapdispatch, symbol is', symbol);
       dispatch(addSymbol(position, symbol));
     }
   };
