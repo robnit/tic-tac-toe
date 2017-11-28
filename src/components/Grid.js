@@ -43,8 +43,7 @@ class Grid extends Component {
 
 function mapStateToProps(state) {
   return {
-    //Question: why are there two nested gameReducers in this state param? Is there a better way to do this?
-    grid: state.gameReducer.grid
+    grid: state.game.grid
   };
 }
 

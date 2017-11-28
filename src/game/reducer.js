@@ -5,14 +5,12 @@ export const initialState = {
   activePlayer: actions.X
 };
 
-export default function gameReducer(state = initialState, { type, payload }) {
+export default function game(state = initialState, { type, payload }) {
   switch(type){
   case actions.SYMBOL_ADD:
-  //Question: is this line functionally identical to var newGrid = [...state.grid] ?
-    var newGrid = state.grid;
+    var newGrid = [...state.grid];
     var { position, activePlayer } = payload;
     newGrid[position] = activePlayer;
-    
     return {
       ...state,
       grid: newGrid
