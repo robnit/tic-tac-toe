@@ -1,4 +1,4 @@
-import { SYMBOL_ADD } from './constants';
+import { SYMBOL_ADD, TIE_GAME } from './constants';
 
 export function addSymbol(position) {
   return (dispatch, getState) => {
@@ -13,7 +13,7 @@ export function addSymbol(position) {
     const { grid } = getState().game;
     if (grid.indexOf(null) === -1) {
       dispatch({
-        type: 'TIE_GAME'
+        type: TIE_GAME
       });
     }
   };
