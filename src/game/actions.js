@@ -1,4 +1,4 @@
-import { SYMBOL_ADD, TIE_GAME } from './constants';
+import { SYMBOL_ADD, TIE_GAME, WIN_GAME} from './constants';
 
 export function addSymbol(position) {
   return (dispatch, getState) => {
@@ -11,11 +11,33 @@ export function addSymbol(position) {
     });
 
     const { grid } = getState().game;
+    winner();
+
     if (grid.indexOf(null) === -1) {
       dispatch({
         type: TIE_GAME
       });
     }
   };
+}
+
+function winner(grid) {
+  const rows = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < rows.length; i++) {
+    const [a, b, c] = rows[i];
+    if (grid[a] && grid[a] === grid[b] && grid[a] === grid[c]) {
+      return grid[c];
+    }
+  }
+  return null;
 }
 
