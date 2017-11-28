@@ -1,4 +1,4 @@
-import { SYMBOL_ADD, TIE_GAME, WIN_GAME } from './constants';
+import { SYMBOL_ADD, TIE_GAME, WIN_GAME, RESET_GAME } from './constants';
 
 export function addSymbol(position) {
   return (dispatch, getState) => {
@@ -45,5 +45,17 @@ export function addSymbol(position) {
     }
     return null;
   }
+}
+
+export function resetGame() {
+  return (dispatch, getState) => {
+    const { whoWon } = getState().game;
+    
+    dispatch({
+      type: RESET_GAME,
+      payload: { whoWon }
+    });
+
+  };
 }
   

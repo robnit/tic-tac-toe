@@ -31,7 +31,7 @@ export default function game(state = initialState, { type, payload }) {
 
   case actions.WIN_GAME:{
     if (state.gameOver === true) return state;
-    
+
     let xWins = state.xWins;
     let oWins = state.oWins;
 
@@ -57,6 +57,32 @@ export default function game(state = initialState, { type, payload }) {
       tie: true,
       gameOver: true
     };
+
+  case actions.RESET_GAME: {
+    //active player to !WhoWon
+    //set all of grid to null
+    //set gameover to false
+    //set whoWon to nobody
+    let newActivePlayer = state.activePlayer;
+
+    if (state.tie === false) {
+      newActivePlayer = (state.whoWon === 'X') ? 'O' : 'X';
+    }
+
+    else {
+      newActivePlayer = (state.activePlayer === 'X') ? 'O' : 'X';
+    }
+ 
+    const newGrid = Array(9).fill(null);
+
+    return{
+      ...state,
+      grid: newGrid,
+      activePlayer: newActivePlayer,
+      gameOver: false,
+      whoWon: 'nobody'
+    };
+  }
 
   default: 
     return state;
