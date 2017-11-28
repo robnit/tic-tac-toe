@@ -37,6 +37,10 @@
   width: 100px;
 }
 
+.square:focus {
+  outline: none;
+}
+
 .row:after {
   clear: both;
   content: "";
