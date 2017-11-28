@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSymbol } from '../game/actions';
 import Square from './Square';
-import { X } from '../game/constants';
 
 class Grid extends Component {
   handleClick(i) {
-    this.props.onAddSymbol(i, X);
+    this.props.onAddSymbol(i);
   }
 
   //Question: this will only run initially. Does not update when props are updated
@@ -49,8 +48,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddSymbol: (position, symbol) => {
-      dispatch(addSymbol(position, symbol));
+    onAddSymbol(position) {
+      dispatch(addSymbol(position));
     }
   };
 }
