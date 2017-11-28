@@ -48,7 +48,6 @@ export function addSymbol(position) {
 }
 
 export function resetGame() {
-  console.log('in actions resetGame');
   return (dispatch, getState) => {
     const { whoWon } = getState().game;
     
