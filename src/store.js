@@ -14,7 +14,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // create store
 const store = createStore(
   gameReducer,
-  {}, 
+  
   // this is the new piece here!!!
   composeEnhancers(
     applyMiddleware(thunk)

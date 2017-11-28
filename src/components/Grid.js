@@ -7,7 +7,7 @@ import { X } from '../game/constants';
 class Grid extends Component {
   handleClick(i) {
     console.log('handleClick, i is', i);
-    addSymbol(i, X);
+    this.props.onAddSymbol(i, X);
   }
 
   renderSquare(i) {
@@ -52,7 +52,13 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    onAddSymbol: (position, symbol) => dispatch(addSymbol(position, symbol))
+  };
+}
+
 export default connect(
   mapStateToProps,
-  { addSymbol }
+  mapDispatchToProps,
 )(Grid);
