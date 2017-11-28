@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSymbol, resetGame } from '../game/actions';
 import Square from './Square';
+import 'bulma/css/bulma.css';
 
 class Grid extends Component {
   handleClick(i) {
@@ -23,10 +24,10 @@ class Grid extends Component {
   }
 
   render() {
-    const tied = (this.props.tie) ? <div><span>You Tied</span> <button onClick={() => this.handleReset()}>RESET</button></div> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span> <button onClick={() => this.handleReset()}>RESET</button></div>  : null;
+    const tied = (this.props.tie) ? <div><span>You Tied</span> <button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span> <button className="button" onClick={() => this.handleReset()}>RESET</button></div>  : null;
     return(
-      <div>
+      <div className="center">
         <div className="row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
