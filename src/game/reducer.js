@@ -1,9 +1,9 @@
 import * as actions from './constants';
-import { TIE_GAME } from './constants';
 
 export const initialState = {
   grid: Array(9).fill(null),
   activePlayer: actions.X,
+  won: false,
   tie: false
 };
 
@@ -20,6 +20,12 @@ export default function game(state = initialState, { type, payload }) {
       ...state,
       grid: newGrid,
       activePlayer: newPlayer
+    };
+
+  case actions.WIN_GAME:
+    return  {
+      ...state,
+      won: true
     };
 
   case actions.TIE_GAME:
