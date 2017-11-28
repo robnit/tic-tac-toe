@@ -13,6 +13,7 @@ export function addSymbol(position) {
     const { grid } = getState().game;
     const winner = getWinner(grid);
     if (winner !== null) {
+      console.log('in actions, winner is', winner);
       dispatch({
         type: WIN_GAME,
         payload: winner
