@@ -18,6 +18,7 @@ class Grid extends Component {
   }
 
   render() {
+    if (this.props.tie) return <span>You Tied</span>;
     return(
       <div>
         <div className="row">
@@ -42,7 +43,8 @@ class Grid extends Component {
 
 function mapStateToProps(state) {
   return {
-    grid: state.game.grid
+    grid: state.game.grid,
+    tie: state.game.tie
   };
 }
 
