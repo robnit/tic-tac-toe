@@ -11,6 +11,7 @@ export default function game(state = initialState, { type, payload }) {
   case actions.SYMBOL_ADD:
     var newGrid = [...state.grid];
     var { position, activePlayer } = payload;
+    if (newGrid[position] !== null) return state;
     newGrid[position] = activePlayer;
 
     var newPlayer = (activePlayer === 'X') ? 'O' : 'X';
