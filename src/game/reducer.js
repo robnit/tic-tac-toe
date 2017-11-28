@@ -5,19 +5,19 @@ export const initialState = {
   activePlayer: actions.X
 };
 
-export default function gameReducer(state = initialState, { type, payload }) {
-  console.log('in reducer');
+//Question: why does lint flip out if we use anything other than var within a switch?
+export default function game(state = initialState, { type, payload }) {
   switch(type){
   case actions.SYMBOL_ADD:
-    console.log('in symbol add case, payload is', payload);
     var newGrid = [...state.grid];
     var { position, activePlayer } = payload;
-    console.log('position is', position, '\n active player', activePlayer);
     newGrid[position] = activePlayer;
-    
+
+    var newPlayer = (activePlayer === 'X') ? 'O' : 'X';
     return {
       ...state,
-      grid: newGrid
+      grid: newGrid,
+      activePlayer: newPlayer
     };
 
   default: 

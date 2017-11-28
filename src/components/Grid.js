@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSymbol } from '../game/actions';
 import Square from './Square';
-import { X } from '../game/constants';
 
 class Grid extends Component {
   handleClick(i) {
-    this.props.onAddSymbol(i, X);
+    this.props.onAddSymbol(i);
   }
 
+  //Question: this will only run initially. Does not update when props are updated
   renderSquare(i) {
-    return <Square 
-      // value={this.state.squares[i]}
+    return (<Square 
+      value={this.props.grid[i]}
       index={i}
-      onClick={a => {
-        return this.handleClick(a);
-      }
-      }
-    />;
+      onClick={a => this.handleClick(a)
+      }/>);
   }
 
   render() {
@@ -45,15 +42,14 @@ class Grid extends Component {
 
 function mapStateToProps(state) {
   return {
-    grid: state
+    grid: state.game.grid
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddSymbol: (position, symbol) => {
-      console.log('mapdispatch, symbol is', symbol);
-      dispatch(addSymbol(position, symbol));
+    onAddSymbol(position) {
+      dispatch(addSymbol(position));
     }
   };
 }
