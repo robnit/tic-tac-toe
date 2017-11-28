@@ -9,9 +9,10 @@ export default function gameReducer(state = initialState, { type, payload }) {
   console.log('in reducer');
   switch(type){
   case actions.SYMBOL_ADD:
-    console.log('in symbol add case');
+    console.log('in symbol add case, payload is', payload);
     var newGrid = [...state.grid];
     var { position, activePlayer } = payload;
+    console.log('position is', position, '\n active player', activePlayer);
     newGrid[position] = activePlayer;
     
     return {

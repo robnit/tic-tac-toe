@@ -6,17 +6,14 @@ import { X } from '../game/constants';
 
 class Grid extends Component {
   handleClick(i) {
-    console.log('handleClick, i is', i);
     this.props.onAddSymbol(i, X);
   }
 
   renderSquare(i) {
-    console.log('about to render a square, i is', i);
     return <Square 
       // value={this.state.squares[i]}
       index={i}
       onClick={a => {
-        console.log('in onClick, i is', a);
         return this.handleClick(a);
       }
       }
@@ -54,7 +51,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddSymbol: (position, symbol) => dispatch(addSymbol(position, symbol))
+    onAddSymbol: (position, symbol) => {
+      console.log('mapdispatch, symbol is', symbol);
+      dispatch(addSymbol(position, symbol));
+    }
   };
 }
 

@@ -1,9 +1,9 @@
 import { SYMBOL_ADD } from './constants';
 
-export function addSymbol(position, symbol) {
-  console.log('in addSymbol, position', position,'\n symbol', symbol);
+export function addSymbol(position, activePlayer) {
+  console.log('in addactivePlayer, position', position,'\n activePlayer', activePlayer);
   return {
     type: SYMBOL_ADD,
-    payload: { position, symbol }
+    payload: { position, activePlayer }
   };
 }
