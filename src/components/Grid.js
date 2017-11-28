@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addSymbol } from '../game/actions';
+import { addSymbol, resetGame } from '../game/actions';
 import Square from './Square';
 
 class Grid extends Component {
   handleClick(i) {
     this.props.onAddSymbol(i);
+  }
+
+  handleReset() {
+    console.log('in handleReset');
+    this.props.onReset();
   }
 
   //Question: this will only run initially. Does not update when props are updated
@@ -18,8 +23,8 @@ class Grid extends Component {
   }
 
   render() {
-    const tied = (this.props.tie) ? <span>You Tied</span> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <span>{this.props.whoWon} is the Winner</span> : null;
+    const tied = (this.props.tie) ? <div><span>You Tied</span> <button onClick={() => this.handleReset()}>RESET</button></div> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <div><span>{this.props.whoWon} is the Winner</span> <button onClick={() => this.handleReset()}>RESET</button></div>  : null;
     return(
       <div>
         <div className="row">
@@ -62,6 +67,10 @@ function mapDispatchToProps(dispatch) {
   return {
     onAddSymbol(position) {
       dispatch(addSymbol(position));
+    },
+    onReset() {
+      console.log('in mapDispatch');
+      dispatch(resetGame());
     }
   };
 }

@@ -59,6 +59,7 @@ export default function game(state = initialState, { type, payload }) {
     };
 
   case actions.RESET_GAME: {
+    console.log('in reducer');
     //active player to !WhoWon
     //set all of grid to null
     //set gameover to false
@@ -80,6 +81,7 @@ export default function game(state = initialState, { type, payload }) {
       grid: newGrid,
       activePlayer: newActivePlayer,
       gameOver: false,
+      tie: false,
       whoWon: 'nobody'
     };
   }
