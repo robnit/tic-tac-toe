@@ -16,7 +16,10 @@ export default function game(state = initialState, { type, payload }) {
   case actions.SYMBOL_ADD: {
     const newGrid = [...state.grid];
     const { position, activePlayer } = payload;
+
     if (newGrid[position] !== null) return state;
+    if (state.gameOver === true) return state;
+
     newGrid[position] = activePlayer;
     const newPlayer = (activePlayer === 'X') ? 'O' : 'X';
     return {
@@ -27,11 +30,24 @@ export default function game(state = initialState, { type, payload }) {
   }
 
   case actions.WIN_GAME:{
-    console.log('in reducer, payload is', payload);
+    if (state.gameOver === true) return state;
+    
+    let xWins = state.xWins;
+    let oWins = state.oWins;
+
+    if(payload === 'X') {
+      xWins++;
+    }
+    else if(payload === 'O') {
+      oWins++;
+    }
+
     return  {
       ...state,
       whoWon: payload,
-      gameOver: true
+      gameOver: true,
+      xWins: xWins,
+      oWins: oWins
     };
   }
 
