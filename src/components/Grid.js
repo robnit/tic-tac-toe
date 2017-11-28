@@ -39,6 +39,9 @@ class Grid extends Component {
         </div>
         <span>{winner}</span>
         <span>{tied}</span>
+        <span>X wins: {this.props.xWins}</span>
+        <span>O wins: {this.props.oWins}</span>
+        <p>It's {this.props.activePlayer}'s turn</p>
       </div>
     );
   }
@@ -48,7 +51,10 @@ function mapStateToProps(state) {
   return {
     grid: state.game.grid,
     tie: state.game.tie,
-    whoWon: state.game.whoWon
+    whoWon: state.game.whoWon,
+    xWins: state.game.xWins,
+    oWins: state.game.oWins,
+    activePlayer: state.game.activePlayer
   };
 }
 
