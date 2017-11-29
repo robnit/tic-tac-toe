@@ -21,6 +21,7 @@ export default function game(state = initialState, { type, payload }) {
     if (state.gameOver === true) return state;
 
     newGrid[position] = activePlayer;
+    
     const newPlayer = (activePlayer === 'X') ? 'O' : 'X';
     return {
       ...state,

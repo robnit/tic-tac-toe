@@ -13,7 +13,6 @@ class Grid extends Component {
     this.props.onReset();
   }
 
-  //Question: this will only run initially. Does not update when props are updated
   renderSquare(i) {
     return (<Square 
       value={this.props.grid[i]}
@@ -23,12 +22,12 @@ class Grid extends Component {
   }
 
   render() {
-    const tied = (this.props.tie) ? <div><span>You Tied</span><br/>
-      <button className="button" onClick={() => this.handleReset()}>RESET</button></div> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <div>
+    const tied = (this.props.tie) ? <span><span>You Tied</span><br/>
+      <button className="button" onClick={() => this.handleReset()}>RESET</button></span> : null;
+    const winner = (this.props.whoWon !== 'nobody') ? <span>
       <span>{this.props.whoWon} is the Winner</span><br/>
       <button className="button" onClick={() => this.handleReset()}>RESET</button>
-    </div>  : null;
+    </span>  : null;
     return(
       <div className="center">
         <div className="row">
