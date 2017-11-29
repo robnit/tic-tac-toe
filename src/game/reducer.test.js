@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { SYMBOL_ADD, TIE_GAME, X, O, RESET_GAME } from './constants';
+import { SYMBOL_ADD, TIE_GAME, RESET_GAME, WIN_GAME } from './constants';
 
 describe('reducer test', () => {
 
@@ -21,6 +21,15 @@ describe('reducer test', () => {
     expect(state.grid[3]).toEqual(null);
   });
 
+  it('should register a game win', () => {
+    let state = reducer(undefined, { type: WIN_GAME, payload: 'X' });
+    expect(state.xWins).toEqual(1);
+  });
+
+  it('should register a tie game', () => {
+    let state = reducer(undefined, { type: TIE_GAME });
+    expect(state.tie).toEqual(true);
+  });
 
 
 });
