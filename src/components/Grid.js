@@ -14,20 +14,29 @@ class Grid extends Component {
   }
 
   renderSquare(i) {
-    return (<Square 
-      value={this.props.grid[i]}
-      index={i}
-      onClick={a => this.handleClick(a)
-      }/>);
+    return (
+      <Square 
+        value={this.props.grid[i]}
+        index={i}
+        onClick={a => this.handleClick(a)
+        }/>);
   }
 
   render() {
-    const tied = (this.props.tie) ? <span><span>You Tied</span><br/>
-      <button className="button" onClick={() => this.handleReset()}>RESET</button></span> : null;
-    const winner = (this.props.whoWon !== 'nobody') ? <span>
-      <span>{this.props.whoWon} is the Winner</span><br/>
-      <button className="button" onClick={() => this.handleReset()}>RESET</button>
-    </span>  : null;
+    const tied = (this.props.tie) 
+      ? <section>
+        <span>You Tied</span><br/>
+        <button className="button" onClick={() => this.handleReset()}>RESET</button>
+      </section> 
+      : null;
+
+    const winner = (this.props.whoWon !== 'nobody')
+      ? <section>
+        <span>{this.props.whoWon} is the Winner</span><br/>
+        <button className="button" onClick={() => this.handleReset()}>RESET</button>
+      </section>
+      : null;
+      
     return(
       <div className="center">
         <div className="row">
