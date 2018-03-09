@@ -10,7 +10,6 @@ export const initialState = {
   gameOver: false
 };
 
-//Question: why does lint flip out if we use anything other than var within a switch?
 export default function game(state = initialState, { type, payload }) {
   switch(type){
   case actions.SYMBOL_ADD: {
